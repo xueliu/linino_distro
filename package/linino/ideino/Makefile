@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2013 Arduino LLC. All right reserved
+# Copyright (C) 2014 Dog Hunter AG. All right reserved
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
@@ -8,8 +8,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ideino
-PKG_VERSION:=0.0.4
-PKG_RELEASE:=5
+PKG_VERSION:=0.0.5
+PKG_RELEASE:=3
 
 #PKG_SOURCE:=v$(PKG_VERSION).tar.gz
 #PKG_SOURCE_URL:=https://github.com/ideino/ideino-linino-dist/archive/v${PKG_VERSION}
@@ -77,9 +77,18 @@ define Package/ideino/prerm
 # # check if we are on real system
 if [ -x /etc/init.d/ideino ] && [ -x /etc/init.d/ideinoautorun ]
 then
+	
+	#Killing node processes
+	ps www | grep -i [n]ode | grep -v sh | awk {'print $1'} | xargs kill -9 > /dev/null 2>&1
+
+	#Disabling the ideino daemons
 	echo "Disabling rc.d symlink for ideino"
+	
+	/etc/init.d/ideino stop
+ 	/etc/init.d/ideinoautorun stop
 	/etc/init.d/ideino disable
  	/etc/init.d/ideinoautorun disable
+ 	
 fi
 exit 0
 endef
