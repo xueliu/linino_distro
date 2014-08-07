@@ -72,4 +72,3 @@ define Package/node/install
 endef
 
 $(eval $(call BuildPackage,node))
-
