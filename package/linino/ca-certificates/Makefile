@@ -1,9 +1,5 @@
 # 
-<<<<<<< HEAD
-# Copyright (C) 2014 Dog Hunter AG
-=======
-# Copyright (C) 2006 OpenWrt.org
->>>>>>> 80a55b865a654cea038ba98867b8afe999cde2fa
+# Copyright (C) 2006 Dog Hunter AG
 #
 # This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
@@ -41,8 +37,4 @@ define Package/ca-certificates/install
 	$(INSTALL_DATA) $(PKG_INSTALL_DIR)/usr/share/ca-certificates/*/*.crt $(1)/etc/ssl/certs/
 endef
 
-<<<<<<< HEAD
 $(eval $(call BuildPackage,ca-certificates))
-=======
-$(eval $(call BuildPackage,ca-certificates))
->>>>>>> 80a55b865a654cea038ba98867b8afe999cde2fa
