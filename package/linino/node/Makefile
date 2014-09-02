@@ -63,12 +63,12 @@ define Build/Compile
 endef
 
 define Package/node/install
-	mkdir -p $(1)/usr/bin
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/out/Release/node $(1)/usr/bin/nodejs
-	ln -sf ../bin/node $(1)/usr/bin/nodejs
-	mkdir -p $(1)/usr/lib/node_modules
-	$(CP) $(PKG_BUILD_DIR)/deps/npm $(1)/usr/lib/node_modules
-	ln -sf ../lib/node_modules/npm/bin/npm-cli.js $(1)/usr/bin/npm
+    mkdir -p $(1)/usr/bin
+    $(CP) $(PKG_BUILD_DIR)/out/Release/node $(1)/usr/bin/
+    #	
+    mkdir -p $(1)/usr/lib/node_modules
+    $(CP) $(PKG_BUILD_DIR)/deps/npm $(1)/usr/lib/node_modules
+    ln -sf ../lib/node_modules/npm/bin/npm-cli.js $(1)/usr/bin/npm
 endef
 
 $(eval $(call BuildPackage,node))
