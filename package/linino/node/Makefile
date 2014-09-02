@@ -22,43 +22,43 @@ PKG_V8_VERSION:=3.14.5
 include $(INCLUDE_DIR)/package.mk
 
 define Package/node
-  DEPENDS:=+libpthread +librt +uclibcxx +v8m-rb
-  #SUBMENU:=Node.js
-  SECTION:=lang
-  CATEGORY:=Languages
-  TITLE:=Node.js is a platform built on Chrome's JavaScript runtime
-  URL:=http://nodejs.org/
+    DEPENDS:=+libpthread +librt +uclibcxx +v8m-rb
+    #SUBMENU:=Node.js
+    SECTION:=lang
+    CATEGORY:=Languages
+    TITLE:=Node.js is a platform built on Chrome's JavaScript runtime
+    URL:=http://nodejs.org/
 endef
 
 define Package/node/description
- Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
+    Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
 endef
 
 define Build/Configure
-	(cd $(PKG_BUILD_DIR); \
-	CC="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-gcc" \
-	CXX="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
-	AR="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-ar" \
-	RANLIB="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-ranlib" \
-	LD="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
-	LINK="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
-	PATH="/usr/bin/:$(PATH)" \
-	GYPFLAGS="-Dv8_use_mips_abi_hardfloat=false -Dv8_can_use_fpu_instructions=false" \
-	LDFLAGS="-L$(TOOLCHAIN_DIR)/lib/ -Wl,-rpath-link $(TOOLCHAIN_DIR)/lib/" \
-	./configure --without-snapshot --shared-v8 --shared-v8-includes="$(BUILD_DIR)/v8m-rb-$(PKG_V8_VERSION)/include/" --shared-v8-libpath="$(STAGING_DIR)/root-ar71xx/usr/lib" --dest-cpu=mips --dest-os=linux --with-arm-float-abi=soft; \
-	);
+    (cd $(PKG_BUILD_DIR); \
+    CC="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-gcc" \
+    CXX="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
+    AR="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-ar" \
+    RANLIB="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-ranlib" \
+    LD="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
+    LINK="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
+    PATH="/usr/bin/:$(PATH)" \
+    GYPFLAGS="-Dv8_use_mips_abi_hardfloat=false -Dv8_can_use_fpu_instructions=false" \
+    LDFLAGS="-L$(TOOLCHAIN_DIR)/lib/ -Wl,-rpath-link $(TOOLCHAIN_DIR)/lib/" \
+    ./configure --without-snapshot --shared-v8 --shared-v8-includes="$(BUILD_DIR)/v8m-rb-$(PKG_V8_VERSION)/include/" --shared-v8-libpath="$(STAGING_DIR)/root-ar71xx/usr/lib" --dest-cpu=mips --dest-os=linux --with-arm-float-abi=soft; \
+    );
 endef
 
 define Build/Compile
-	CC="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-gcc" \
-	CXX="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
-	AR="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-ar" \
-	RANLIB="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-ranlib" \
-	LD="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
-	LINK="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
-	PATH="/usr/bin/:$(PATH)" \
-	GYPFLAGS="-Dv8_use_mips_abi_hardfloat=false -Dv8_can_use_fpu_instructions=false" \
-	LDFLAGS="-L$(TOOLCHAIN_DIR)/lib/ -Wl,-rpath-link $(TOOLCHAIN_DIR)/lib/" \
+    CC="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-gcc" \
+    CXX="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
+    AR="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-ar" \
+    RANLIB="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-ranlib" \
+    LD="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
+    LINK="$(TOOLCHAIN_DIR)/bin/mips-openwrt-linux-g++" \
+    PATH="/usr/bin/:$(PATH)" \
+    GYPFLAGS="-Dv8_use_mips_abi_hardfloat=false -Dv8_can_use_fpu_instructions=false" \
+    LDFLAGS="-L$(TOOLCHAIN_DIR)/lib/ -Wl,-rpath-link $(TOOLCHAIN_DIR)/lib/" \
 	$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) DESTDIR="$(PKG_INSTALL_DIR)" snapshot=off werror=no
 endef
 
