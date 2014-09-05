@@ -8,16 +8,16 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=avrdude
-PKG_VER:=5.11.1
-PKG_REV:=1138
-PKG_VERSION:=$(PKG_VER)-r$(PKG_REV)
+PKG_VERSION:=6.1
+#PKG_REV:=1138
+#PKG_VERSION:=$(PKG_VER)-r$(PKG_REV)
 PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=http://svn.savannah.nongnu.org/svn/avrdude/trunk/avrdude
-PKG_SOURCE_SUBDIR:=avrdude-$(PKG_VERSION)
-PKG_SOURCE_VERSION:=$(PKG_REV)
-PKG_SOURCE_PROTO:=svn
+PKG_SOURCE_URL:=http://download.savannah.gnu.org/releases/avrdude
+#PKG_SOURCE_SUBDIR:=avrdude-$(PKG_VERSION)
+#PKG_SOURCE_VERSION:=$(PKG_REV)
+#PKG_SOURCE_PROTO:=svn
 
 include $(INCLUDE_DIR)/package.mk
 
