@@ -1,0 +1,12 @@
+#!/bin/bash
+
+kernelinfo () {
+    
+    branchname=`git rev-parse --abbrev-ref HEAD`
+    gitcommit=`git rev-parse --short HEAD`
+
+    echo "KBUILD_BUILD_TIMESTAMP="Linino $branchname $gitcommit `date`""
+    	
+}
+
+kernelinfo
