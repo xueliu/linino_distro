@@ -823,6 +823,7 @@ $(eval $(call SingleProfile,LininoLzma,$(fs_64k),LININO_CHIWAWA_16M,linino-chiwa
 
 # LININO_SINGLE_PROFILES is the list of all available Linino's profiles
 LININO_SINGLE_PROFILES:=LININO_YUN_16M LININO_YUN_16M_250k LININO_ONE_16M_250k LININO_ONE_16M LININO_FREEDOG_16M LININO_CHIWAWA_16M LININO_FREEDOG_16M_250k
+LININO_YUNONE_PROFILES:=LININO_YUN_16M LININO_YUN_16M_250k LININO_ONE_16M LININO_ONE_16M_250k
 
 $(eval $(call SingleProfile,ALFA,$(fs_64k),ALFANX,alfa-nx,ALFA-NX,ttyS0,115200,$$(alfa_mtdlayout_8M),1638400,6291456,vmlinux.gz.uImage,pb9x-2.6.31-jffs2))
 $(eval $(call SingleProfile,ALFA,$(fs_64k),HORNETUB,hornet-ub,HORNET-UB,ttyATH0,115200,$$(alfa_mtdlayout_8M),1638400,6291456,kernel_image,rootfs_image))
@@ -974,6 +975,7 @@ $(eval $(call MultiProfile,LININO_YUN,LININO_YUN_16M LININO_YUN_16M_250k))
 $(eval $(call MultiProfile,LININO_ONE,LININO_ONE_16M LININO_ONE_16M_250k))
 $(eval $(call MultiProfile,LININO_FREEDOG,LININO_FREEDOG_16M LININO_FREEDOG_16M_250k))
 $(eval $(call MultiProfile,LININO_CHIWAWA,LININO_CHIWAWA_16M))
+$(eval $(call MultiProfile,LININO_YUNONE, $(LININO_YUNONE_PROFILES)))
 
 $(eval $(call MultiProfile,AP121,AP121_2M AP121_4M))
 $(eval $(call MultiProfile,EWDORIN, EWDORINAP EWDORINRT))
