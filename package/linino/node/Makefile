@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=node
 PKG_VERSION:=v0.10.25
-PKG_RELEASE:=6
+PKG_RELEASE:=8
 
 PKG_SOURCE:=node-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=http://nodejs.org/dist/${PKG_VERSION}
@@ -45,7 +45,7 @@ define Build/Configure
     PATH="/usr/bin/:$(PATH)" \
     GYPFLAGS="-Dv8_use_mips_abi_hardfloat=false -Dv8_can_use_fpu_instructions=false" \
     LDFLAGS="-L$(TOOLCHAIN_DIR)/lib/ -Wl,-rpath-link $(TOOLCHAIN_DIR)/lib/" \
-    ./configure --without-snapshot --shared-v8 --shared-v8-includes="$(BUILD_DIR)/v8m-rb-$(PKG_V8_VERSION)/include/" --shared-v8-libpath="$(STAGING_DIR)/root-ar71xx/usr/lib" --dest-cpu=mips --dest-os=linux --with-arm-float-abi=soft; \
+    ./configure --without-snapshot --shared-v8 --shared-v8-includes="$(BUILD_DIR)/v8m-rb-$(PKG_V8_VERSION)/include/" --shared-v8-libpath="$(STAGING_DIR)/root-ar71xx/usr/lib" --dest-cpu=mips --dest-os=linux --with-mips-float-abi=soft; \
     );
 endef
 
