@@ -20,12 +20,12 @@ define Package/png2mono
 	DEPENDS:=+libpng +libstdcpp +libc +libpthread
 	SECTION:=multimedia
 	CATEGORY:=Multimedia
-	TITLE:=png2mono
+	TITLE:=Converts a png grayscale image to Black/white image
 	URL:=http://www.aureliocolosimo.it
 endef
 
 define Package/png2mono/description
-	Converts a png grayscale image to Black/white image
+	Converts a png grayscale image to Black/White image
 endef
 
 define Build/Prepare
