@@ -30,8 +30,7 @@ endef
 
 define Build/Prepare
 	(if [ ! $(PKG_CAT) ];then echo "libc.so.6" >> $(PKG_FILE); fi)
-	(cp src/png2mono.c $(PKG_BUILD_DIR); \
-	cd $(PKG_BUILD_DIR);)
+	cp src/png2mono.c $(PKG_BUILD_DIR)
 endef
 
 define Build/Compile
