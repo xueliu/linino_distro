@@ -9,9 +9,8 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=v8m-rb
 PKG_VERSION:=3.14.5
-PKG_RELEASE:=6
+PKG_RELEASE:=7
 
-PKG_SOURCE_PROTO:=git
 GIT_SOURCE:=https://github.com/paul99/v8m-rb.git
 
 PKG_BUILD_PARALLEL:=3
@@ -32,9 +31,8 @@ endef
 
 define Build/Prepare
     $(call Build/Prepare/Default)
-    (cd $(PKG_BUILD_DIR); \
-    git clone $(GIT_SOURCE) -b dm-mipsbe-3.14 ${PKG_BUILD_DIR}; \
-    cd ${PKG_BUILD_DIR}; \
+    (git clone $(GIT_SOURCE) -b dm-mipsbe-3.14 ${PKG_BUILD_DIR}; \
+    cd $(PKG_BUILD_DIR); \
     make dependencies);
 endef
 
