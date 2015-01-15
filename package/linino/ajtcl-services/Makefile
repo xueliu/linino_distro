@@ -1,8 +1,8 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ajtcl-services
-PKG_REVISION:=2b331416c1a2d91e18399a48e6e90726d26e8da6
-PKG_VERSION:=$(PKG_REVISION)
+PKG_REVISION:=7b875c76cb29304f955c5b5a4bafb2194c6f779e
+PKG_VERSION:=1.0.1
 PKG_RELEASE:=1
 PKG_MD5SUM:=
 
@@ -25,6 +25,7 @@ define Package/$(PKG_NAME)/Default
   SECTION:=net
   CATEGORY:=Network
   DEPENDS:=ajtcl
+  TITLE:=AllJoyn Thin Client Base Services library
   URL:=http://www.allseenalliance.org
   MAINTAINER:=AllSeen Alliance <allseen-core@lists.allseenalliance.org>
 endef
@@ -36,9 +37,9 @@ $(call Package/$(PKG_NAME)/Default)
 endef
 
 define Package/$(PKG_NAME)/description
-AllJoyn Thin Client Base Services is the standard AllJoyn services libraries for
-the AllJoyn Thin Client C library for developing ad hoc peer-to-peer
-applications that use the AllJoyn protocol.
+	AllJoyn Thin Client Base Services is the standard AllJoyn services libraries for
+	the AllJoyn Thin Client C library for developing ad hoc peer-to-peer
+	applications that use the AllJoyn protocol. Revision : 7b875c76cb29304f955c5b5a4bafb2194c6f779e
 endef
 
 #define Package/$(PKG_NAME)-samples
